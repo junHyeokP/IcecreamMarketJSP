@@ -10,7 +10,7 @@ public interface iceDAO {
 	
 	List<Icecream> selecAll();
 	
-	int update(Icecream book);
+	int update(Icecream icecream);
 	
 	int delete(int id);
 }
