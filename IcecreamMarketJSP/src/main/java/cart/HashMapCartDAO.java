@@ -6,8 +6,21 @@ import java.util.List;
 
 public class HashMapCartDAO implements CartDAO {
 	
+	private static HashMapCartDAO instance = null;
+	
 	static private HashMap<Integer, CartItem> cartTable = new HashMap<>();
 	static private int cart_seq = 0;
+	
+	private HashMapCartDAO() {
+		System.out.println("HashMapCartDAO객체가 생성되었습니다.");
+	}
+	
+	public static HashMapCartDAO getInstance() {
+		if (instance == null) {
+			instance = new HashMapCartDAO();
+		}
+		return instance;
+	}
 
 	@Override
 	public int insert(CartItem item) {
@@ -106,7 +119,7 @@ public class HashMapCartDAO implements CartDAO {
 	}
 	
 	@Override
-	public int deleteByIceID(int IceID) {
+	public int deleteByIceID(int iceID) {
 		int result = 0;
 		// 어째선지 작동이 안됨
 //		List<CartItem> itemList = selectByBookId(iceID);
@@ -114,6 +127,13 @@ public class HashMapCartDAO implements CartDAO {
 //			cartTable.remove(item.getId());
 //			result++;
 //		}
+		
+		for (CartItem item : cartTable.values()) {
+			if (item.getIceID() == iceID) {
+				cartTable.remove(item.getId());
+				System.out.println("장바구니에서 아이스크림 삭제");
+			}
+		}
 		
 		return result;
 	}

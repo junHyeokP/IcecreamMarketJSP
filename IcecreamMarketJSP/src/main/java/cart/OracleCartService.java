@@ -16,7 +16,7 @@ public class OracleCartService implements CartService{
 		
 		int result = 0;
 		
-		// 장바구니에 같은 아이스크림이 있는지 확인한다 --> iceID로 확인
+		// 장바구니에 같은 아이스크림이 있는지 확인한다 --> iceID로 확인, 확인되었을시 수량만 업데이트
 		CartItem initem = cdao.selectByIceID(item.getMemberNo(), item.getIceID());
 		if (initem == null) {
 			System.out.println("비어있으므로 새 아이스크림 추가");

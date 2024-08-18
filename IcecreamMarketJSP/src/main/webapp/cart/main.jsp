@@ -7,6 +7,7 @@
 <%
 	// CartService cartService = new OracleCartService(new ListCartDAO());
 	CartService cartService = new OracleCartService(new OracleCartDAO());
+	//CartService cartService = new OracleCartService(new HashMapCartDAO());
 	List<CartItem> itemList = cartService.listAll(memberNo);	
 %>    
 <!DOCTYPE html>
@@ -51,9 +52,10 @@
 				totalPrice += ice.getPrice() * item.getQuantity();
 			%>
 			
-		<tr>
-		
-			<td><%= item.getIceID() %></td><td><%= ice.getName() %></td>
+		<tr><td><%= item.getId() %></td>
+	
+			<td><%= item.getIceID() %></td>
+			<td><a href="<%= request.getContextPath() %>/icecream/detailPage.jsp?id=<%= ice.getIceID() %>"><%= ice.getName() %></td>
 			<td><%= String.format("%,d", ice.getPrice()) %>원</td>
 		
 		<td>

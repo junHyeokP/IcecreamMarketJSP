@@ -6,18 +6,18 @@
 
 	CartService service = new OracleCartService(new OracleCartDAO());
 	//CartService service = new OracleCartService(new HashMapCartDAO());
-	String bookIdStr = request.getParameter("bookID");
+	String iceIDStr = request.getParameter("iceID");
 	
-	if (bookIdStr == null || bookIdStr.isEmpty()) {
-		response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?bookIdErr=1");
+	if (iceIDStr == null || iceIDStr.isEmpty()) {
+		response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?iceIDErr=1");
 		return;
 	}
 	
-	if (service.add(new CartItem(memberNo, Integer.parseInt(bookIdStr), 1))) {
+	if (service.add(new CartItem(memberNo, Integer.parseInt(iceIDStr), 1))) {
 		response.sendRedirect(request.getContextPath() + "/cart/main.jsp");
 		
 	} else {
-		response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?bookIdErr=1");
+		response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?iceIDErr=1");
 	}
 	
 %>   

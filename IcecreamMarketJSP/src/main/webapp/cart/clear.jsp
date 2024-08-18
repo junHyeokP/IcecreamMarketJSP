@@ -4,7 +4,8 @@
     <%@ include file = "/common/isLoggedIn.jsp" %>
 <%
 	CartService cartService = new OracleCartService(new OracleCartDAO());
-	
+	//CartService cartService = new OracleCartService(new HashMapCartDAO());
+
 	if (cartService.clear(memberNo)) {
 			response.sendRedirect(request.getContextPath() + "/cart/main.jsp");
 	} else {

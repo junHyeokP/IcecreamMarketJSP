@@ -10,6 +10,8 @@
 	}
 	
 	CartService cartService = new OracleCartService(new OracleCartDAO());
+	//CartService cartService = new OracleCartService(new HashMapCartDAO());
+	
 	if (cartService.remove(Integer.parseInt(idStr), memberNo)) {
 			response.sendRedirect(request.getContextPath() + "/cart/main.jsp");
 	} else {

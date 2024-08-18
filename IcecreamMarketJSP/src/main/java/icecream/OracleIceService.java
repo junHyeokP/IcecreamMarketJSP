@@ -48,7 +48,7 @@ public class OracleIceService implements IceService {
 
 		int result = 0;
 		//** CartService cartService = new HJCartService(new OracleCartDAO());
-		CartService cartService = new OracleCartService(new HashMapCartDAO());
+		CartService cartService = new OracleCartService(HashMapCartDAO.getInstance());
 		List<CartItem> itemList = cartService.readByIceID(iceID);
 		if (itemList.size() > 0) {
 			cartService.removeByIceID(iceID);

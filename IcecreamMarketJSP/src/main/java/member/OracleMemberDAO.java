@@ -111,7 +111,8 @@ public class OracleMemberDAO implements MemberDAO {
 					jdbc.rs.getString("id"),
 					jdbc.rs.getString("password"),
 					jdbc.rs.getString("nickname"),
-					jdbc.rs.getDate("regdate"));
+					jdbc.rs.getDate("regdate")
+					);
 				member.setMobile(jdbc.rs.getString("mobile"));
 				member.setAddress(jdbc.rs.getString("address"));
 				member.setEmail(jdbc.rs.getString("email"));
@@ -141,13 +142,11 @@ public class OracleMemberDAO implements MemberDAO {
 		List<Member> memberList = new ArrayList<>();
 
 		try {
-			// PreparedStatement 객체 생성
+	
 			jdbc.pstmt = jdbc.conn.prepareStatement(sql);
-
-			// SQL문 실행
+			
 			jdbc.rs = jdbc.pstmt.executeQuery();
 
-			// ResultSet 객체에서 결과값 가져와서 출력하기
 			while (jdbc.rs.next()) {
 				Member member = new Member(jdbc.rs.getInt("no"),
 						jdbc.rs.getString("id"),

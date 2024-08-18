@@ -3,7 +3,7 @@ package member;
 import java.util.Date;
 
 public class Member {
-	private int no;	//회원번호
+	private int no;	
 	private String id;
 	private String password;
 	private String nickname;
@@ -29,7 +29,7 @@ public class Member {
 	}
 	
 	public int getNo() {
-		return no+1;
+		return no;
 	}
 	public void setNo(int no) {
 		this.no = no;
