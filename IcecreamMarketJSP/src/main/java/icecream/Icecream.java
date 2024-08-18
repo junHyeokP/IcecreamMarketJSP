@@ -4,10 +4,9 @@ import java.util.Date;
 
 public class Icecream {
 	
-	private int iceNo;
+	private int iceID;
 	private String name;
 	private int price;
-	private int instock = 10;
 	private Date regDate;
 	
 	public Icecream() {}
@@ -17,12 +16,12 @@ public class Icecream {
 		this.price = price;
 	}
 
-	public int getIceNo() {
-		return iceNo;
+	public int getIceID() {
+		return iceID +1;
 	}
 
-	public void setIceNo(int iceNo) {
-		this.iceNo = iceNo;
+	public void setIceID(int iceID) {
+		this.iceID = iceID;
 	}
 
 	public String getName() {
@@ -33,8 +32,6 @@ public class Icecream {
 		this.name = name;
 	}
 
-		
-
 	public int getPrice() {
 		return price;
 	}
@@ -43,14 +40,7 @@ public class Icecream {
 		this.price = price;
 	}
 
-	public int getInstock() {
-		return instock;
-	}
-
-	public void setInstock(int instock) {
-		this.instock = instock;
-	}
-
+	
 	public Date getRegDate() {
 		return regDate;
 	}
@@ -61,8 +51,8 @@ public class Icecream {
 
 	@Override
 	public String toString() {
-		return "Icecream [iceNo=" + iceNo + ", name=" + name + ", price=" + price + ", instock=" + instock
-				+ ", regDate=" + regDate + "]";
+		return "Icecream [iceID=" + iceID + ", name=" + name + ", price=" + price +
+			   ", regDate=" + regDate + "]";
 	}
 
 	

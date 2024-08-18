@@ -4,11 +4,14 @@ public class IceTest {
 
 	public static void main(String[] args) {
 		
-		iceDAO iceDao = new OracleIcecreamDAO();
+		IceService service = new OracleIceService(new OracleIceDAO());
+     	Icecream ice = service.load(1);
 		
-		Icecream ice = new Icecream("메로나", 1200);
-		
-		iceDao.insert(ice);
+		if (ice == null) {
+		System.out.println("null");
+		} else {
+		System.out.println(ice.getIceID());	
+		}
 	}
 
 }

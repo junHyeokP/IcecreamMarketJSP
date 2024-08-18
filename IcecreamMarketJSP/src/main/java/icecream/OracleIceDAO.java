@@ -1,13 +1,13 @@
 package icecream;
 
-import java.sql.SQLException;
+import java.sql.SQLException; 
 import java.util.ArrayList;
 import java.util.List;
 
 import common.JDBConnection;
 import common.OracleJDBConnection;
 
-public class OracleIcecreamDAO implements iceDAO {
+public class OracleIceDAO implements IceDAO {
 
 	@Override
 	public int insert(Icecream ice) {
@@ -15,8 +15,8 @@ public class OracleIcecreamDAO implements iceDAO {
 		
 		JDBConnection jdbc = new OracleJDBConnection();
 		
-		String sql = new StringBuilder().append("insert into icecream (iceNo, name, price, instock, regDate)")
-										.append("values (ice_Seq.nextval, ?, ?, ?, sysdate)")
+		String sql = new StringBuilder().append("insert into icecream (iceID, name, price, regDate)")
+										.append("values (ice_Seq.nextval, ?, ?, sysdate)")
 										.toString();
 		
 		
@@ -26,7 +26,6 @@ public class OracleIcecreamDAO implements iceDAO {
 			
 			jdbc.pstmt.setString(1, ice.getName());
 			jdbc.pstmt.setInt(2, ice.getPrice());
-			jdbc.pstmt.setInt(3, ice.getInstock());
 			
 			result = jdbc.pstmt.executeUpdate();
 			
@@ -51,11 +50,10 @@ public class OracleIcecreamDAO implements iceDAO {
 		
 		JDBConnection jdbc = new OracleJDBConnection();
 		
-		String sql = new StringBuilder()
-										.append("select * from icecream where id = ?")
-										.toString();
+		String sql = "select * from icecream where iceID = ?";
+
 		
-		Icecream icecream = null;
+		Icecream ice = null;
 		
 		try {
 		
@@ -65,10 +63,12 @@ public class OracleIcecreamDAO implements iceDAO {
 			jdbc.rs = jdbc.pstmt.executeQuery();
 			
 			if (jdbc.rs.next()) {
-				icecream = new Icecream(
+				ice = new Icecream(
 						jdbc.rs.getString("name"),
 						jdbc.rs.getInt("price"));
 				
+			} else {
+				System.out.println("비어있습니다.");
 			}
 		
 		} catch (SQLException e) {
@@ -81,11 +81,11 @@ public class OracleIcecreamDAO implements iceDAO {
 			
 		}
 		
-		return icecream;
+		return ice;
 	}
 
 	@Override
-	public List<Icecream> selecAll() {
+	public List<Icecream> selectAll() {
 		
 		JDBConnection jdbc = new OracleJDBConnection();
 		
@@ -102,7 +102,9 @@ public class OracleIcecreamDAO implements iceDAO {
 				Icecream ice= new Icecream(
 								jdbc.rs.getString("name"),
 								jdbc.rs.getInt("price"));
+				
 				iceList.add(ice);
+				
 			}
 		} catch (SQLException e) {
 			
@@ -122,9 +124,9 @@ public class OracleIcecreamDAO implements iceDAO {
 	public int update(Icecream icecream) {
 		
 		OracleJDBConnection jdbc = new OracleJDBConnection();
-		String sql = new StringBuilder().append("update book ")
+		String sql = new StringBuilder().append("update icecream ")
 				.append("set name = ?, price = ? ")
-				.append("where iceNo = ?")
+				.append("where iceID = ?")
 				.toString();
 		int result = 0;
 
@@ -133,7 +135,7 @@ public class OracleIcecreamDAO implements iceDAO {
 
 			jdbc.pstmt.setString(1, icecream.getName());
 			jdbc.pstmt.setInt(2, icecream.getPrice());
-			jdbc.pstmt.setInt(3, icecream.getIceNo());
+			jdbc.pstmt.setInt(3, icecream.getIceID());
 
 			result = jdbc.pstmt.executeUpdate();
 			System.out.println(result + "개의 행이 수정되었습니다.");
@@ -160,7 +162,7 @@ public class OracleIcecreamDAO implements iceDAO {
 		
 		jdbc.pstmt = null;
 		
-		String sql = "delete icecream where iceNo = ?";
+		String sql = "delete icecream where iceID = ?";
 		
 		
 		

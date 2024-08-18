@@ -2,13 +2,13 @@ package icecream;
 
 import java.util.List;
 
-public interface iceDAO {
+public interface IceDAO {
 	
 	int insert(Icecream ice);
 	
 	Icecream select(int id);
 	
-	List<Icecream> selecAll();
+	List<Icecream> selectAll();
 	
 	int update(Icecream icecream);
 	
