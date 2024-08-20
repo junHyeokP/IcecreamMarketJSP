@@ -9,8 +9,8 @@
 			return;
 	}
 	
-	CartService cartService = new OracleCartService(new OracleCartDAO());
-	//CartService cartService = new OracleCartService(new HashMapCartDAO());
+	//CartService cartService = new OracleCartService(new OracleCartDAO());
+	CartService cartService = new OracleCartService(HashMapCartDAO.getInstance());
 	
 	if (cartService.remove(Integer.parseInt(idStr), memberNo)) {
 			response.sendRedirect(request.getContextPath() + "/cart/main.jsp");

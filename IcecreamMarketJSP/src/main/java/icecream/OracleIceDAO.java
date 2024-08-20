@@ -159,9 +159,6 @@ public class OracleIceDAO implements IceDAO {
 		
 		int result = 0;
 		
-		
-		jdbc.pstmt = null;
-		
 		String sql = "delete icecream where iceID = ?";
 		
 		

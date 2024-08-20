@@ -33,7 +33,7 @@ CartService cartService = new OracleCartService(new OracleCartDAO());
   <h2>주문하기</h2>
   <h3>주문할 아이스크림 목록</h3>
  	 <table border = 2>
-			<tr><th>책 번호</th><th>책 제목</th><th>가격</th><th>권수</th></tr>
+			<tr><th>번호</th><th>제목</th><th>가격</th><th>갯수</th></tr>
 			<% 
 			int numItems = 0, totalPrice = 0, i = 0; 
 			 for (CartItem item : itemList) {

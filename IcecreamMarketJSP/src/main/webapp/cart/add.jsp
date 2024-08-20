@@ -4,8 +4,8 @@
     <%@ include file = "/common/isLoggedIn.jsp" %>
 <%
 
-	CartService service = new OracleCartService(new OracleCartDAO());
-	//CartService service = new OracleCartService(new HashMapCartDAO());
+	//CartService service = new OracleCartService(new OracleCartDAO());
+	CartService service = new OracleCartService(HashMapCartDAO.getInstance());
 	String iceIDStr = request.getParameter("iceID");
 	
 	if (iceIDStr == null || iceIDStr.isEmpty()) {

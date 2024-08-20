@@ -6,7 +6,7 @@ public class CartTest {
 
 	public static void main(String[] args) {
 		
-		CartService service = new OracleCartService(new HashMapCartDAO());
+		CartService service = new OracleCartService(HashMapCartDAO.getInstance());
 		List<CartItem> itemList;
 		
 //		// C

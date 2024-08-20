@@ -6,8 +6,8 @@
      <%@ include file = "/common/isLoggedIn.jsp" %>
 <%
 	// CartService cartService = new OracleCartService(new ListCartDAO());
-	CartService cartService = new OracleCartService(new OracleCartDAO());
-	//CartService cartService = new OracleCartService(new HashMapCartDAO());
+	//CartService cartService = new OracleCartService(new OracleCartDAO());
+	CartService cartService = new OracleCartService(HashMapCartDAO.getInstance());
 	List<CartItem> itemList = cartService.listAll(memberNo);	
 %>    
 <!DOCTYPE html>
